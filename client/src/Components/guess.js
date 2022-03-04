@@ -1,13 +1,12 @@
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
 
-function Guess({ guess, setGuess }) {
+function Guess({ guess, setGuess, game, word }) {
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(guess);
+          console.log(game(guess, word));
         }}
       >
         <TextField
