@@ -6,8 +6,10 @@ function Guess({ guess, setGuess, game, word, guesses, setGuesses }) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(game(guess, word));
-          setGuesses([...guesses, game(guess, word)]);
+          if (guess.length === 5) {
+            setGuesses([...guesses, game(guess, word)]);
+            setGuess("");
+          }
         }}
       >
         <TextField
@@ -16,7 +18,9 @@ function Guess({ guess, setGuess, game, word, guesses, setGuesses }) {
           variant="outlined"
           value={guess}
           onChange={(e) => {
-            setGuess(e.target.value);
+            if (e.target.value.length <= 5) {
+              setGuess(e.target.value);
+            }
           }}
         />
       </form>

@@ -9,7 +9,6 @@ function PreviousGuesses({ guesses }) {
   return (
     <div>
       {guesses.map((guess) => {
-        console.log(guess);
         return <PreviousGuess guess={guess} />;
       })}
     </div>

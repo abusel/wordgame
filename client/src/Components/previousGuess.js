@@ -14,9 +14,15 @@ function PreviousGuess({ guess }) {
     >
       {guess.map((letter) => {
         return (
-          <p style={{ color: colorObj[letter[1]] }}>
-            {letter[0].toUpperCase()}
-          </p>
+          <div>
+            <p
+              style={{
+                color: colorObj[letter[1]],
+              }}
+            >
+              {letter[0].toUpperCase()}
+            </p>
+          </div>
         );
       })}
     </div>

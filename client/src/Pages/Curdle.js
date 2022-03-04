@@ -22,6 +22,17 @@ function Curdle() {
     for (let i = 0; i < guess.length; i++) {
       if (guess[i] === secret[i]) {
         bulls++;
+        if (hashMap[guess[i]] === 0) {
+          console.log(output);
+          output[
+            output.indexOf(
+              output.find((arr) => {
+                return arr[0] === guess[i];
+              })
+            )
+          ] = [guess[i], 0];
+        }
+        hashMap[guess[i]]--;
         output.push([guess[i], 2]);
       } else if (hashMap[guess[i]] > 0) {
         cows++;
