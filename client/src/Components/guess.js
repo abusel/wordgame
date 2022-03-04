@@ -7,7 +7,7 @@ function Guess({ guess, setGuess, game, word, guesses, setGuesses }) {
         onSubmit={(e) => {
           e.preventDefault();
           if (guess.length === 5) {
-            setGuesses([...guesses, game(guess, word)]);
+            setGuesses([...guesses, game(guess.toLowerCase(), word)]);
             setGuess("");
           }
         }}
