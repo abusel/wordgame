@@ -1,12 +1,13 @@
 import TextField from "@mui/material/TextField";
 
-function Guess({ guess, setGuess, game, word }) {
+function Guess({ guess, setGuess, game, word, guesses, setGuesses }) {
   return (
-    <div>
+    <div style={{ justifyContent: "center", display: "flex" }}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           console.log(game(guess, word));
+          setGuesses([...guesses, game(guess, word)]);
         }}
       >
         <TextField

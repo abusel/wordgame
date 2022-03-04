@@ -1,9 +1,10 @@
-import PreviousGuess from "../Components/previousGuess";
+import PreviousGuesses from "../Components/previousGuesses";
 import { useState } from "react";
 import Guess from "../Components/guess";
 
 function Curdle() {
   const [guess, setGuess] = useState("");
+  const [guesses, setGuesses] = useState([]);
   let word = "queso";
   function game(guess, secret) {
     let bulls = 0;
@@ -36,9 +37,16 @@ function Curdle() {
   game(word, "ought");
   return (
     <div>
-      <h1>Curdle</h1>
-      <PreviousGuess guess={guess} />
-      <Guess guess={guess} setGuess={setGuess} game={game} word={word} />
+      <h1 style={{ justifyContent: "center", display: "flex" }}>Curdle</h1>
+      <PreviousGuesses guesses={guesses} />
+      <Guess
+        guess={guess}
+        setGuess={setGuess}
+        game={game}
+        word={word}
+        guesses={guesses}
+        setGuesses={setGuesses}
+      />
     </div>
   );
 }
