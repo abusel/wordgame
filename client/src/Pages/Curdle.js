@@ -5,7 +5,7 @@ import Guess from "../Components/guess";
 function Curdle() {
   const [guess, setGuess] = useState("");
   const [guesses, setGuesses] = useState([]);
-  let word = "fondu";
+  let word = "asiago";
   function game(guess, secret) {
     let bulls = 0;
     let cows = 0;
