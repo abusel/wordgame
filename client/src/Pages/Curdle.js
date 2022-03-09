@@ -5,7 +5,7 @@ import Guess from "../Components/guess";
 function Curdle() {
   const [guess, setGuess] = useState("");
   const [guesses, setGuesses] = useState([]);
-  let word = "pizza";
+  let word = "board";
   function game(guess, secret) {
     let bulls = 0;
     let cows = 0;
@@ -47,7 +47,15 @@ function Curdle() {
   }
   return (
     <div>
-      <h1 style={{ justifyContent: "center", display: "flex" }}>Curdle</h1>
+      <h1
+        style={{
+          justifyContent: "center",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        Curdle
+      </h1>
       <PreviousGuesses guesses={guesses} />
       <Guess
         guess={guess}
