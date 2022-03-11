@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+/* Keyboard */
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4%;
+}
+
+.row {
+  display: inline;
+}
+.letter {
+  margin: 3px;
+}
+.crossed {
+  background-color: darkgray;
+  text-decoration: line-through;
+}
+.yellow {
+  background-color: yellow;
+}
+.green {
+  background-color: green;
+}
