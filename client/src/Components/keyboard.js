@@ -1,4 +1,4 @@
-function Keyboard({ setGuess, guess, lettersGuessed }) {
+function Keyboard({ setGuess, guess, lettersGuessed, submitRef }) {
   let topRow = "qwertyuiop";
   let middleRow = "asdfghjkl";
   let bottomRow = "zxcvbnm";
@@ -63,6 +63,26 @@ function Keyboard({ setGuess, guess, lettersGuessed }) {
             </button>
           );
         })}
+      </div>
+      <div style={{ display: "flex" }}>
+        <button
+          className="menuButton"
+          onClick={() => {
+            setGuess((guess) => guess.substring(0, guess.length - 1));
+          }}
+        >
+          Backspace
+        </button>
+        <button
+          className="menuButton"
+          onClick={(e) => {
+            submitRef.current.dispatchEvent(
+              new Event("submit", { bubbles: true, cancelable: true })
+            );
+          }}
+        >
+          Enter
+        </button>
       </div>
     </div>
   );

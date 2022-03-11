@@ -1,9 +1,18 @@
 import TextField from "@mui/material/TextField";
 
-function Guess({ guess, setGuess, game, word, guesses, setGuesses }) {
+function Guess({
+  guess,
+  setGuess,
+  game,
+  word,
+  guesses,
+  setGuesses,
+  submitRef,
+}) {
   return (
     <div style={{ justifyContent: "center", display: "flex" }}>
       <form
+        ref={submitRef}
         onSubmit={(e) => {
           e.preventDefault();
           if (guess.length === 5) {

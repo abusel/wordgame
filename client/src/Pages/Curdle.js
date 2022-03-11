@@ -1,6 +1,6 @@
 import PreviousGuesses from "../Components/previousGuesses";
 import Keyboard from "../Components/keyboard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Guess from "../Components/guess";
 
 function Curdle() {
@@ -15,9 +15,7 @@ function Curdle() {
       });
     });
   }, []);
-  useEffect(() => {
-    console.log(lettersGuessed);
-  }, [lettersGuessed]);
+  let submitRef = useRef();
 
   let word = "colby";
   function game(guess, secret) {
@@ -93,12 +91,14 @@ function Curdle() {
         word={word}
         guesses={guesses}
         setGuesses={setGuesses}
+        submitRef={submitRef}
       />
 
       <Keyboard
         setGuess={setGuess}
         guess={guess}
         lettersGuessed={lettersGuessed}
+        submitRef={submitRef}
       />
     </div>
   );
