@@ -63,7 +63,7 @@ function Curdle() {
     output.forEach((letter) => {
       console.log(letter);
 
-      if (letter[1] === 0) {
+      if (letter[1] === 0 && placeholder[letter[0]] === 3) {
         placeholder[letter[0]] = 0;
       } else if (letter[1] === 2) {
         placeholder[letter[0]] = 2;
