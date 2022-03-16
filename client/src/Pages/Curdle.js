@@ -17,7 +17,7 @@ function Curdle() {
   }, []);
   let submitRef = useRef();
 
-  let word = "colby";
+  let word = "bries";
   function game(guess, secret) {
     let bulls = 0;
     let cows = 0;

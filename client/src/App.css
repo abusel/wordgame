@@ -55,16 +55,17 @@
   width: 35px;
   text-align: center;
   justify-content: center;
+  background-color: lightgray;
 }
 .crossed {
-  background-color: darkgray;
+  background-color: darkgray !important;
   text-decoration: line-through;
 }
 .yellow {
-  background-color: yellow;
+  background-color: yellow !important;
 }
 .green {
-  background-color: green;
+  background-color: green !important;
 }
 .menuButton {
   width: 100px;
