@@ -2,6 +2,10 @@ import PreviousGuesses from "../Components/previousGuesses";
 import Keyboard from "../Components/keyboard";
 import { useState, useEffect, useRef } from "react";
 import Guess from "../Components/guess";
+import { Typography } from "@mui/material";
+import { Dialog } from "@mui/material";
+import { DialogContent } from "@mui/material";
+import { Alert } from "@mui/material";
 
 function Curdle() {
   const [guess, setGuess] = useState("");
@@ -17,7 +21,19 @@ function Curdle() {
   }, []);
   let submitRef = useRef();
 
-  let word = "bries";
+  let word = "fetta";
+  let hint = "If you don't like fondu you may not like today's word"
+  let win = guesses[guesses.length -1] && guesses[guesses.length -1].reduce((prev, curr) => prev + curr[0], "") == word
+  let [wordbank, setWordbank] = useState(new Set()) 
+  let [invalid, setInvalid] = useState(false)
+  useEffect(()=>{
+    wordbank.size === 0 && fetch('https://raw.githubusercontent.com/tabatkins/wordle-list/main/words')
+    .then((r) => r.text())
+    .then(text  => {
+      text.split(/\r?\n/).forEach(line => setWordbank(wordBank => wordBank.add(line)))
+    })  
+  }, [])
+
   function game(guess, secret) {
     let bulls = 0;
     let cows = 0;
@@ -59,7 +75,6 @@ function Curdle() {
     }
     let placeholder = { ...lettersGuessed };
     output.forEach((letter) => {
-      console.log(letter);
 
       if (letter[1] === 0 && placeholder[letter[0]] === 3) {
         placeholder[letter[0]] = 0;
@@ -73,16 +88,37 @@ function Curdle() {
     return output;
   }
   return (
-    <div>
+    <div style={{display: "flex", flexDirection: "column"}}>
+      <Dialog open={win}>
+        <DialogContent>
+          <Alert severity="success">Winner! only {guesses.length} guess{guesses.length > 1 && "es"}</Alert>
+        </DialogContent>
+      </Dialog>
+      <Dialog open={!win && guesses.length === 4}>
+        <DialogContent>
+          <Alert severity="error">Tough.. better luck tomorrow!</Alert>
+        </DialogContent>
+      </Dialog>
+      <div style={{
+      display: "flex", 
+      flexDirection: "row", alignItems: "center",
+      justifyContent: "space-between",
+      width: "90%", marginLeft: "auto", 
+      marginRight: "auto"
+      }}>
       <h1
         style={{
-          justifyContent: "center",
-          display: "flex",
-          flexDirection: "column",
+          marginLeft: "5%",
         }}
       >
         Curdle
       </h1>
+      <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
+        <Typography>Guesses Left</Typography>
+        <Typography variant="h3">{4 - guesses.length}</Typography>
+      </div>
+      </div>
+      
       <PreviousGuesses guesses={guesses} />
       <Guess
         guess={guess}
@@ -92,8 +128,19 @@ function Curdle() {
         guesses={guesses}
         setGuesses={setGuesses}
         submitRef={submitRef}
+        wordbank={wordbank}
+        setInvalid={setInvalid}
       />
-
+      {invalid && <Alert severity="error" outlined>Invalid Word</Alert>}
+      <div>
+        <Typography style={{
+          marginLeft: "5%",
+        }}>Clue <sup>(New!)</sup></Typography>
+        <Typography style={{
+          marginLeft: "8%",
+          marginRight: "8%"
+        }}>{hint}</Typography>
+      </div>
       <Keyboard
         setGuess={setGuess}
         guess={guess}
