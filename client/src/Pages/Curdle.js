@@ -21,8 +21,13 @@ function Curdle() {
   }, []);
   let submitRef = useRef();
 
-  let word = "fetta";
-  let hint = "If you don't like fondu you may not like today's word"
+
+  // Settings
+  let word = "italy";
+  let hint = "Pamesello vs Parmigiano"
+  let maxGuesses = 4
+
+
   let win = guesses[guesses.length -1] && guesses[guesses.length -1].reduce((prev, curr) => prev + curr[0], "") == word
   let [wordbank, setWordbank] = useState(new Set()) 
   let [invalid, setInvalid] = useState(false)
@@ -30,8 +35,9 @@ function Curdle() {
     wordbank.size === 0 && fetch('https://raw.githubusercontent.com/tabatkins/wordle-list/main/words')
     .then((r) => r.text())
     .then(text  => {
-      text.split(/\r?\n/).forEach(line => setWordbank(wordBank => wordBank.add(line)))
-    })  
+      text.split(/\r?\n/).forEach(line => setWordbank(wordbank => wordbank.add(line)))
+    })
+    !wordbank.has(word) && setWordbank(wordbank => wordbank.add(word))
   }, [])
 
   function game(guess, secret) {
@@ -94,7 +100,7 @@ function Curdle() {
           <Alert severity="success">Winner! only {guesses.length} guess{guesses.length > 1 && "es"}</Alert>
         </DialogContent>
       </Dialog>
-      <Dialog open={!win && guesses.length === 4}>
+      <Dialog open={!win && guesses.length === maxGuesses}>
         <DialogContent>
           <Alert severity="error">Tough.. better luck tomorrow!</Alert>
         </DialogContent>
@@ -115,7 +121,7 @@ function Curdle() {
       </h1>
       <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
         <Typography>Guesses Left</Typography>
-        <Typography variant="h3">{4 - guesses.length}</Typography>
+        <Typography variant="h3">{maxGuesses - guesses.length}</Typography>
       </div>
       </div>
       
@@ -134,11 +140,11 @@ function Curdle() {
       {invalid && <Alert severity="error" outlined>Invalid Word</Alert>}
       <div>
         <Typography style={{
-          marginLeft: "5%",
+          marginLeft: "30%",
         }}>Clue <sup>(New!)</sup></Typography>
         <Typography style={{
-          marginLeft: "8%",
-          marginRight: "8%"
+          marginLeft: "35%",
+          marginRight: "35%"
         }}>{hint}</Typography>
       </div>
       <Keyboard
