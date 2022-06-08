@@ -23,8 +23,8 @@ function Curdle() {
 
 
   // Settings
-  let word = "italy";
-  let hint = "Pamesello vs Parmigiano"
+  let word = "sharp";
+  let hint = "this kind of cheese is aged, to a point"
   let maxGuesses = 4
 
 
@@ -102,7 +102,7 @@ function Curdle() {
       </Dialog>
       <Dialog open={!win && guesses.length === maxGuesses}>
         <DialogContent>
-          <Alert severity="error">Tough.. better luck tomorrow!</Alert>
+          <Alert severity="error">Tough.. better luck tomorrow!  Today's word was {word}</Alert>
         </DialogContent>
       </Dialog>
       <div style={{
