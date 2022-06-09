@@ -23,8 +23,8 @@ function Curdle() {
 
 
   // Settings
-  let word = "sharp";
-  let hint = "this kind of cheese is aged, to a point"
+  let word = "dairy";
+  let hint = "nearly a journal"
   let maxGuesses = 4
 
 
