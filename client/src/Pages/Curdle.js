@@ -23,8 +23,8 @@ function Curdle() {
 
 
   // Settings
-  let word = "dairy";
-  let hint = "nearly a journal"
+  let word = "wheel";
+  let hint = "Some say the Romans invented this.  Others would contend they merely reinvented it."
   let maxGuesses = 4
 
 
