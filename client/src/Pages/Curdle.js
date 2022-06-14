@@ -23,8 +23,8 @@ function Curdle() {
 
 
   // Settings
-  let word = "rinds";
-  let hint = "Natural armors"
+  let word = "slice";
+  let hint = "American contribution to cheese"
   let maxGuesses = 4
 
 
@@ -97,7 +97,9 @@ function Curdle() {
     <div style={{display: "flex", flexDirection: "column"}}>
       <Dialog open={win}>
         <DialogContent>
-          <Alert severity="success">Winner! only {guesses.length} guess{guesses.length > 1 && "es"}</Alert>
+          <Alert severity="success">
+          {guesses.length === 1 ?  "Wow only one guess.. you are truly a cheese whizz!" :  `Winner! only ${guesses.length} guesses`}</Alert>
+          
         </DialogContent>
       </Dialog>
       <Dialog open={!win && guesses.length === maxGuesses}>
