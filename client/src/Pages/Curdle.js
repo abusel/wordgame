@@ -23,8 +23,8 @@ function Curdle() {
 
 
   // Settings
-  let word = "slice";
-  let hint = "American contribution to cheese"
+  let word = "kraft";
+  let hint = "Without them, philly sandwiches would be much different"
   let maxGuesses = 4
 
 
