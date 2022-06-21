@@ -23,8 +23,8 @@ function Curdle() {
 
 
   // Settings
-  let word = "kraft";
-  let hint = "Without them, philly sandwiches would be much different"
+  let word = "stink";
+  let hint = "Unpleasantly good"
   let maxGuesses = 4
 
 
