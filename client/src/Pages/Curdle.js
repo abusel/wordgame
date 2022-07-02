@@ -23,8 +23,8 @@ function Curdle() {
 
 
   // Settings
-  let word = "stink";
-  let hint = "Unpleasantly good"
+  let word = "cloth";
+  let hint = "Holy, but not like swiss"
   let maxGuesses = 4
 
 
