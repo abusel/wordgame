@@ -23,8 +23,8 @@ function Curdle() {
 
 
   // Settings
-  let word = "cloth";
-  let hint = "Holy, but not like swiss"
+  let word = "milks";
+  let hint = "Starts the process to make cheese."
   let maxGuesses = 4
 
 
