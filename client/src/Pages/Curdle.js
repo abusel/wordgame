@@ -23,8 +23,8 @@ function Curdle() {
 
 
   // Settings
-  let word = "milks";
-  let hint = "Starts the process to make cheese."
+  let word = "grate";
+  let hint = "One Tony sounds like he says it, while countless others do it."
   let maxGuesses = 4
 
 
